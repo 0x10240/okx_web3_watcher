@@ -1,0 +1,16 @@
+services:
+
+  okx_web3_watcher:
+    build: .
+    image: okx_web3_watcher
+    container_name: okx_web3_watcher
+    volumes:
+      - ./.env:/app/.env
+    working_dir: /app
+    command: python /app/main.py
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
